@@ -86,8 +86,7 @@ class TimeSlotsScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 30, bottom: 30),
                               child: MyGridView(
-                                elements: Provider.of<TimeSlotsProvider>(context,
-                                        listen: false)
+                                elements: Provider.of<TimeSlotsProvider>(context, listen: false)
                                     .zones,
                                 listName: "Zones",
                               ),

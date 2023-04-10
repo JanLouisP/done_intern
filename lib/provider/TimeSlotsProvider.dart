@@ -44,6 +44,37 @@ class TimeSlotsProvider extends ChangeNotifier {
   List<Map<String, dynamic>> get zones {
     return _zones;
   }
+  //If timeslots get selected single till every timeslot in one timezone is selected
+  //its associated container needs to be filled black.
+  //So this function checks whether all elements in a group are toggled.
+  void hasAllElementsToggled() {
+    bool morningAllToggled =
+    timesMorning.every((element) => element['Toggled']);
+    bool afternoonAllToggled =
+    timesAfternoon.every((element) => element['Toggled']);
+    bool eveningAllToggled =
+    timesEvening.every((element) => element['Toggled']);
+
+    if(morningAllToggled){
+      zones[0]["Toggled"] = true;
+    }else{
+      zones[0]["Toggled"] = false;
+    }
+    if(afternoonAllToggled){
+      zones[1]["Toggled"] = true;
+    }else{
+      zones[1]["Toggled"] = false;
+    }
+    if(eveningAllToggled){
+      zones[2]["Toggled"] = true;
+    }else{
+      zones[2]["Toggled"] = false;
+    }
+
+    notifyListeners();
+  }
+
+
 
   //Iterate through all available lists.
   //If an element is Toggled(selected) it is added to the selectedTimes list.
@@ -97,6 +128,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     //change "selected" if necessary
     hasToggledElement();
+    hasAllElementsToggled();
     notifyListeners();
   }
   //Toggles a whole group if selecting one, morning.. afternoon.. evening

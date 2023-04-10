@@ -14,6 +14,15 @@ class MyTimeSlot extends StatelessWidget {
       onTap: () => onTap(),
       child: Consumer<TimeSlotsProvider>(
         builder: (context, value, child) {
+          //Check if one group is selected to set morning, afternoon or evening.
+          bool toggled = false;
+          if (listItem["String"] == "Morning" && value.zones[0]["Toggled"]) {
+            toggled = true;
+          } else if (listItem["String"] == "Afternoon" && value.zones[1]["Toggled"]) {
+            toggled = true;
+          } else if (listItem["String"] == "Evening" && value.zones[2]["Toggled"]) {
+            toggled = true;
+          }
           return AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOutQuad,
@@ -21,7 +30,7 @@ class MyTimeSlot extends StatelessWidget {
             height: 48,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: listItem['Toggled'] ? Colors.black : Colors.grey.shade200,
+              color: listItem['Toggled'] || toggled ? Colors.black : Colors.grey.shade200,
             ),
             child: Center(
               child: Padding(
