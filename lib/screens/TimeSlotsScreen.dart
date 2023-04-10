@@ -107,7 +107,7 @@ class TimeSlotsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 30, bottom: 30),
+                                  left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
                                 elements: Provider.of<TimeSlotsProvider>(context,
                                         listen: false)
@@ -131,7 +131,7 @@ class TimeSlotsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 30, bottom: 30),
+                                  left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
                                 elements: Provider.of<TimeSlotsProvider>(context,
                                         listen: false)
@@ -155,7 +155,7 @@ class TimeSlotsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 30, bottom: 30),
+                                  left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
                                 elements: Provider.of<TimeSlotsProvider>(context,
                                         listen: false)
