@@ -5,7 +5,7 @@ class TimeSlotsProvider extends ChangeNotifier {
   final List<Map<String, dynamic>> _timesAfternoon = [];
   final List<Map<String, dynamic>> _timesEvening = [];
   final List<Map<String, dynamic>> _zones = [];
-  List<DateTime> _selectedTimes = [];
+  final List<DateTime> _selectedTimes = [];
   bool _selected = false;
 
   //Constructor for initializing all Lists with init Values.
@@ -20,61 +20,66 @@ class TimeSlotsProvider extends ChangeNotifier {
   bool get selected {
     return _selected;
   }
+
   //Is set if at least one item is selected.
-  set selected(bool selected){
+  set selected(bool selected) {
     _selected = selected;
   }
+
   //Returns the list of all selected times.
   List<DateTime> get selectedTimes {
     return _selectedTimes;
   }
+
   //Returns the list of all selectable times on afternoon
   List<Map<String, dynamic>> get timesAfternoon {
     return _timesAfternoon;
   }
+
   //Returns the list of all selectable times on evening
   List<Map<String, dynamic>> get timesEvening {
     return _timesEvening;
   }
+
   //Returns the list of all selectable times in the morning
   List<Map<String, dynamic>> get timesMorning {
     return _timesMorning;
   }
- //Returns the list of all selectable timezones.. whole morning.. evening..
+
+  //Returns the list of all selectable timezones.. whole morning.. evening..
   List<Map<String, dynamic>> get zones {
     return _zones;
   }
+
   //If timeslots get selected single till every timeslot in one timezone is selected
   //its associated container needs to be filled black.
   //So this function checks whether all elements in a group are toggled.
   void hasAllElementsToggled() {
     bool morningAllToggled =
-    timesMorning.every((element) => element['Toggled']);
+        timesMorning.every((element) => element['Toggled']);
     bool afternoonAllToggled =
-    timesAfternoon.every((element) => element['Toggled']);
+        timesAfternoon.every((element) => element['Toggled']);
     bool eveningAllToggled =
-    timesEvening.every((element) => element['Toggled']);
+        timesEvening.every((element) => element['Toggled']);
 
-    if(morningAllToggled){
+    if (morningAllToggled) {
       zones[0]["Toggled"] = true;
-    }else{
+    } else {
       zones[0]["Toggled"] = false;
     }
-    if(afternoonAllToggled){
+    if (afternoonAllToggled) {
       zones[1]["Toggled"] = true;
-    }else{
+    } else {
       zones[1]["Toggled"] = false;
     }
-    if(eveningAllToggled){
+    if (eveningAllToggled) {
       zones[2]["Toggled"] = true;
-    }else{
+    } else {
       zones[2]["Toggled"] = false;
     }
 
     notifyListeners();
   }
-
-
 
   //Iterate through all available lists.
   //If an element is Toggled(selected) it is added to the selectedTimes list.
@@ -96,12 +101,12 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
   //Iterates through all lists to check whether there is at least one element toggled,
   //for enabling and disabling the next button.
   void hasToggledElement() {
     bool morningToggled = timesMorning.any((element) => element['Toggled']);
-    bool afternoonToggled =
-        timesAfternoon.any((element) => element['Toggled']);
+    bool afternoonToggled = timesAfternoon.any((element) => element['Toggled']);
     bool eveningToggled = timesEvening.any((element) => element['Toggled']);
     if (morningToggled || afternoonToggled || eveningToggled) {
       selected = true;
@@ -110,6 +115,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
   //Toggles a single selectable element.
   void toggleSingleTimeSlot(int index, String listName) {
     switch (listName) {
@@ -131,6 +137,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     hasAllElementsToggled();
     notifyListeners();
   }
+
   //Toggles a whole group if selecting one, morning.. afternoon.. evening
   void _toggleTimeSlotsGroup(List<dynamic> timeSlots, bool toggleState) {
     for (var i = 0; i < timeSlots.length; i++) {
@@ -138,6 +145,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     hasToggledElement();
   }
+
   //selecting which whole group needs to be selected.
   void toggleTimeSlotGroup(String group) {
     switch (group) {
@@ -166,6 +174,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     return true;
   }
+
   //Initializes the timesMorning list with all needed times.
   Future<bool> initializeDateTimesMorning(DateTime time) async {
     timesMorning.clear();
@@ -185,6 +194,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     return true;
   }
+
   //Initializes the timesAfternoon list with all needed times.
   initializeDateTimesAfternoon(DateTime time) async {
     timesAfternoon.clear();
@@ -204,6 +214,7 @@ class TimeSlotsProvider extends ChangeNotifier {
     }
     return true;
   }
+
   //Initializes the timesEvening list with all needed times.
   initializeDateTimesEvening(DateTime time) async {
     timesEvening.clear();

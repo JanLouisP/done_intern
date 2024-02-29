@@ -1,7 +1,7 @@
-import 'package:doneintern/provider/DateTimeFormatProvider.dart';
-import 'package:doneintern/provider/ProgressIndicatorProvider.dart';
-import 'package:doneintern/provider/TimeSlotsProvider.dart';
-import 'package:doneintern/screens/TimeSlotsScreen.dart';
+import 'package:doneintern/provider/datetimeformat_provider.dart';
+import 'package:doneintern/provider/progressindicator_provider.dart';
+import 'package:doneintern/provider/timeslots_provider.dart';
+import 'package:doneintern/screens/timeslots_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
