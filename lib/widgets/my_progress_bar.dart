@@ -1,9 +1,11 @@
-import 'package:doneintern/provider/ProgressIndicatorProvider.dart';
+import 'package:doneintern/provider/progressindicator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MyProgessBar extends StatelessWidget{
-  const MyProgessBar({super.key,});
+class MyProgessBar extends StatelessWidget {
+  const MyProgessBar({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,5 +34,4 @@ class MyProgessBar extends StatelessWidget{
       ),
     );
   }
-
 }

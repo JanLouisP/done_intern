@@ -1,12 +1,11 @@
-import 'package:doneintern/provider/DateTimeFormatProvider.dart';
-import 'package:doneintern/provider/ProgressIndicatorProvider.dart';
-import 'package:doneintern/provider/TimeSlotsProvider.dart';
+import 'package:doneintern/provider/datetimeformat_provider.dart';
+import 'package:doneintern/provider/progressindicator_provider.dart';
+import 'package:doneintern/provider/timeslots_provider.dart';
 import 'package:doneintern/widgets/MyElevatedButton.dart';
 import 'package:doneintern/widgets/MyGridView.dart';
 import 'package:doneintern/widgets/MyProgressBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class TimeSlotsScreen extends StatelessWidget {
   //The DateTime which is handed to the widget.
@@ -58,9 +57,12 @@ class TimeSlotsScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 20, top: 32),
+                                padding:
+                                    const EdgeInsets.only(left: 20, top: 32),
                                 child: Text(
-                                  Provider.of<DateTimeFormatProvider>(context, listen: false).formatDate(dateTime),
+                                  Provider.of<DateTimeFormatProvider>(context,
+                                          listen: false)
+                                      .formatDate(dateTime),
                                   style: const TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
@@ -71,7 +73,8 @@ class TimeSlotsScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: EdgeInsets.only(left: 20, top: 10, right: 20),
+                                padding: EdgeInsets.only(
+                                    left: 20, top: 10, right: 20),
                                 child: Text(
                                   "Choose as many as you want",
                                   style: TextStyle(
@@ -86,7 +89,9 @@ class TimeSlotsScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 30, bottom: 30),
                               child: MyGridView(
-                                elements: Provider.of<TimeSlotsProvider>(context, listen: false)
+                                elements: Provider.of<TimeSlotsProvider>(
+                                        context,
+                                        listen: false)
                                     .zones,
                                 listName: "Zones",
                               ),
@@ -109,7 +114,8 @@ class TimeSlotsScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
-                                elements: Provider.of<TimeSlotsProvider>(context,
+                                elements: Provider.of<TimeSlotsProvider>(
+                                        context,
                                         listen: false)
                                     .timesMorning,
                                 listName: "Morning",
@@ -133,7 +139,8 @@ class TimeSlotsScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
-                                elements: Provider.of<TimeSlotsProvider>(context,
+                                elements: Provider.of<TimeSlotsProvider>(
+                                        context,
                                         listen: false)
                                     .timesAfternoon,
                                 listName: "Afternoon",
@@ -157,7 +164,8 @@ class TimeSlotsScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 10, bottom: 30),
                               child: MyGridView(
-                                elements: Provider.of<TimeSlotsProvider>(context,
+                                elements: Provider.of<TimeSlotsProvider>(
+                                        context,
                                         listen: false)
                                     .timesEvening,
                                 listName: "Evening",
@@ -170,12 +178,14 @@ class TimeSlotsScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 20, right: 20, left: 20),
+                  padding: const EdgeInsets.only(
+                      top: 10, bottom: 20, right: 20, left: 20),
                   child: MyElevatedButton(
                       onPressed: () {
                         //If at least one element is selected, we can move on in our flow and use the
                         //selected DateTime objects.
-                        if (Provider.of<TimeSlotsProvider>(context, listen: false)
+                        if (Provider.of<TimeSlotsProvider>(context,
+                                listen: false)
                             .selected) {
                           Provider.of<TimeSlotsProvider>(context, listen: false)
                               .addSelectedToggledTimes();

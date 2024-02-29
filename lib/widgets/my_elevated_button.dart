@@ -1,4 +1,4 @@
-import 'package:doneintern/provider/TimeSlotsProvider.dart';
+import 'package:doneintern/provider/timeslots_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,11 +25,14 @@ class MyElevatedButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         ),
-        child: Text(text, style: TextStyle(
-          color:Provider.of<TimeSlotsProvider>(context).selected
-              ? Colors.white
-              : Colors.black,
-        ),),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Provider.of<TimeSlotsProvider>(context).selected
+                ? Colors.white
+                : Colors.black,
+          ),
+        ),
       ),
     );
   }

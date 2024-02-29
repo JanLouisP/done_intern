@@ -1,8 +1,8 @@
-import 'package:doneintern/widgets/MyTimeSlot.dart';
+import 'package:doneintern/widgets/my_timeslot.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/TimeSlotsProvider.dart';
+import '../provider/timeslots_provider.dart';
 
 class MyGridView extends StatelessWidget {
   final List<dynamic> elements;
